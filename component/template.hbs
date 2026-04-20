@@ -42,7 +42,7 @@
       </div>
 
       <div class="row">
-        <div class="col span-6">
+        <div class="col span-4">
           <label class="acc-label">CPUs</label>
           <div class="input-group">
             {{new-select classNames="form-control" content=serverPlans optionLabelPath='core' optionValuePath='core' value=config.core}}
@@ -50,12 +50,17 @@
           </div>
         </div>
 
-        <div class="col span-6">
+        <div class="col span-4">
           <label class="acc-label">Memory</label>
           <div class="input-group">
             {{new-select classNames="form-control" content=memorySizes optionLabelPath='value' optionValuePath='value' value=config.memory}}
             <div class="input-group-addon bg-default">GB</div>
           </div>
+        </div>
+
+        <div class="col span-4">
+          <label class="acc-label">GPUs</label>
+          {{new-select classNames="form-control" content=gpus optionLabelPath='name' optionValuePath='value' value=config.gpu}}
         </div>
       </div>
 

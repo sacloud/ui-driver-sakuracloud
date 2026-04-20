@@ -125,7 +125,8 @@ const SERVER_PLANS = [
       { value: "8"},
       { value: "12"},
       { value: "16"},
-      { value: "24"}
+      { value: "24"},
+      { value: "56"}
     ]
   },
   {
@@ -231,6 +232,18 @@ const SERVER_PLANS = [
   }
 ]
 
+const GPUS =
+  [
+    {
+      name: "0",
+      value: "0"
+    },
+    {
+      name: "1",
+      value: "1"
+    }
+  ];
+
 
 /*!!!!!!!!!!!GLOBAL CONST END!!!!!!!!!!!*/
 
@@ -246,6 +259,7 @@ export default Ember.Component.extend(NodeDriver, {
   diskPlans:  DISK_PLANS,
   diskSizes: null,
   serverPlans: SERVER_PLANS,
+  gpus: GPUS,
   memorySizes: null,
 
   init() {
@@ -294,6 +308,7 @@ export default Ember.Component.extend(NodeDriver, {
       accessTokenSecret   : '',
       core                : '2',
       memory              : '4',
+      gpu                 : '0',
       osType              : 'coreos',
       diskSize            : '40',
       diskPlan            : 'ssd',
@@ -325,6 +340,9 @@ export default Ember.Component.extend(NodeDriver, {
     }
     if ( !get(this, 'config.memory') ) {
       errors.push('Memory is required');
+    }
+    if ( !get(this, 'config.gpu') ) {
+      errors.push('GPUs is required');
     }
     if ( !get(this, 'config.diskPlan') ) {
       errors.push('DiskPlan is required');
